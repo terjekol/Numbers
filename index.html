@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        let number;
+
+        function isValidNumber(n) {
+            let set = new Set();
+            for (let letter of n) {
+                if (set.has(letter)) return false;
+                set.add(letter);
+            }
+            return true;
+        }
+
+        function isCorrectNumbers(allNumbers) {
+            let number1 = parseInt(allNumbers.substring(0, 3));
+            let number2 = parseInt(allNumbers.substring(3, 5));
+            let number3 = parseInt(allNumbers.substring(5, 8));
+            let number4 = parseInt(allNumbers.substring(8, 10));
+            // console.log(number1, number2, number3, number4);
+            return number1 * number2 == number3 * number4;
+        }
+
+        function start() {
+            for (number = 123456789; number <= 9876543210; number++) {
+                let nStr = '' + number;
+                if (!nStr.includes('0')) nStr = '0' + nStr;
+                if (isValidNumber(nStr) && isCorrectNumbers(nStr))
+                    document.body.innerHTML += nStr + '<br/>';
+            }
+        }
+
+
+    </script>
+</body>
+
+</html>
